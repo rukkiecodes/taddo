@@ -5,6 +5,15 @@
         "version": "1.0.0",
         "orientation": "portrait",
         "icon": "./assets/icon.png",
+        "androidStatusBar": {
+            "backgroundColor": "#1A5CFF",
+            "barStyle": "dark-content",
+            "translucent": true,
+        },
+        "androidNavigationBar": {
+            "backgroundColor": "#f4f4f4",
+            "barStyle": "dark-content",
+        },
         "splash": {
             "image": "./assets/splash.png",
             "resizeMode": "contain",

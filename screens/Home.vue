@@ -51,9 +51,7 @@
       <text :style="{ color: '#434343', marginTop: 25 }">Or sign in with</text>
 
       <touchable-opacity :style="google_button">
-        <text :style="{ color: 'white', fontSize: 18, marginRight: 10 }"
-          >Google</text
-        >
+        <text :style="{ color: 'white', fontSize: 18, marginRight: 10 }">Google</text>
         <image :source="require('../assets/google_logo.png')" />
       </touchable-opacity>
 
