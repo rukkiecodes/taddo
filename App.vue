@@ -7,6 +7,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import { createAppContainer } from "react-navigation";
 
 import HomeScreen from "./screens/Home.vue";
+import SignupScreen from "./screens/Signup.vue";
 
 const StackNavigator = createStackNavigator(
   {
@@ -18,6 +19,14 @@ const StackNavigator = createStackNavigator(
         headerShown: false,
       },
     },
+    Signup: {
+      screen: SignupScreen,
+      navigationOptions: {
+        title: "Signup",
+        headerShown: false,
+      },
+    },
+    // Signup: SignupScreen,
   },
   {
     initialRouteName: "Home",
