@@ -1,51 +1,21 @@
 {
+    "name": "taskcheq",
+    "displayName": "taskcheq",
     "expo": {
-        "name": "toddo",
-        "slug": "toddo",
+        "name": "taskcheq",
+        "slug": "taskcheq",
         "version": "1.0.0",
-        "orientation": "portrait",
-        "icon": "./assets/icon.png",
-        "androidStatusBar": {
-            "backgroundColor": "#1A5CFF",
-            "barStyle": "light-content",
-            "translucent": true,
-        },
-        "androidNavigationBar": {
-            "backgroundColor": "#f4f4f4",
-            "barStyle": "dark-content",
-        },
-        "splash": {
-            "image": "./assets/splash.png",
-            "resizeMode": "contain",
-            "backgroundColor": "#ffffff"
-        },
-        "updates": {
-            "fallbackToCacheTimeout": 0
-        },
         "assetBundlePatterns": [
             "**/*"
         ],
-        "ios": {
-            "supportsTablet": true
+        "androidStatusBar": {
+            "backgroundColor": "#1A5CFF",
+            "barStyle": "light-content",
+            "translucent": true
         },
-        "android": {
-            "adaptiveIcon": {
-                "foregroundImage": "./assets/adaptive-icon.png",
-                "backgroundColor": "#FFFFFF"
-            }
-        },
-        "web": {
-            "favicon": "./assets/favicon.png"
-        },
-        "packagerOpts": {
-            "config": "metro.config.js",
-            "sourceExts": [
-                "js",
-                "json",
-                "ts",
-                "tsx",
-                "vue"
-            ]
+        "androidNavigationBar": {
+            "backgroundColor": "#f4f4f4",
+            "barStyle": "dark-content"
         }
     }
 }
