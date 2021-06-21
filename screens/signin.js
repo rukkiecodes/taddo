@@ -5,10 +5,13 @@ const background_image = require("../assets/ball1.png");
 const logo = require("../assets/logo.png");
 const google_logo = require("../assets/google_logo.png");
 
-export default function Signin_screen () {
+export default function Signin_screen ({navigation}) {
   const [email] = React.useState("Email");
   const [password] = React.useState("Password");
 
+  const goto_signup = () => {
+    navigation.navigate("Signup_screen")
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -54,6 +57,7 @@ export default function Signin_screen () {
               alignItems: 'center',
               justifyContent: 'center',
             }}
+            onPress={goto_signup}
           >
             <Text style={{ color: '#434343', fontSize: 18 }}>Sign Up</Text>
           </TouchableOpacity>

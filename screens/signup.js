@@ -1,14 +1,17 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ImageBackground, Image, TextInput, TouchableOpacity } from 'react-native';
 
-const background_image = require("./assets/ball1.png");
-const logo = require("./assets/logo.png");
-const google_logo = require("./assets/google_logo.png");
+const background_image = require("../assets/ball1.png");
+const logo = require("../assets/logo.png");
+const google_logo = require("../assets/google_logo.png");
 
-export default function App () {
+export default function App ({ navigation }) {
   const [email] = React.useState("Email");
   const [password] = React.useState("Password");
 
+  const goto_signin = () => {
+    navigation.navigate("Signin_screen")
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -42,6 +45,7 @@ export default function App () {
               alignItems: 'center',
               justifyContent: 'center',
             }}
+            onPress={goto_signin}
           >
             <Text style={{ color: 'white', fontSize: 18 }}>Sign in</Text>
           </TouchableOpacity>
