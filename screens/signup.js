@@ -38,7 +38,7 @@ export default function App ({ navigation }) {
         >
           <TouchableOpacity
             style={{
-              backgroundColor: '#1A5CFF',
+              backgroundColor: 'rgba(153,153,153,0.5)',
               width: '45%',
               height: 50,
               borderRadius: 50,
@@ -51,7 +51,7 @@ export default function App ({ navigation }) {
           </TouchableOpacity>
           <TouchableOpacity
             style={{
-              backgroundColor: 'rgba(153,153,153,0.5)',
+              backgroundColor: '#1A5CFF',
               width: '45%',
               height: 50,
               borderRadius: 50,

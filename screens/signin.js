@@ -12,6 +12,9 @@ export default function Signin_screen ({navigation}) {
   const goto_signup = () => {
     navigation.navigate("Signup_screen")
   }
+  const goto_todo = () => {
+    navigation.navigate("Todo_screen")
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -74,7 +77,7 @@ export default function Signin_screen ({navigation}) {
           <Text style={styles.forgot_password_text}>Forgot Paswsord?</Text>
         </View>
         <View style={styles.buttons}>
-          <TouchableOpacity style={styles.signin_button}>
+          <TouchableOpacity onPress={goto_todo} style={styles.signin_button}>
             <Text style={styles.signin_button_text}>Sign in</Text>
           </TouchableOpacity>
 
