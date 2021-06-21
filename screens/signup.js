@@ -47,7 +47,7 @@ export default function App ({ navigation }) {
             }}
             onPress={goto_signin}
           >
-            <Text style={{ color: 'white', fontSize: 18 }}>Sign in</Text>
+            <Text style={{ color: '#434343', fontSize: 18 }}>Sign in</Text>
           </TouchableOpacity>
           <TouchableOpacity
             style={{
@@ -59,7 +59,7 @@ export default function App ({ navigation }) {
               justifyContent: 'center',
             }}
           >
-            <Text style={{ color: '#434343', fontSize: 18 }}>Sign Up</Text>
+            <Text style={{ color: '#fff', fontSize: 18 }}>Sign Up</Text>
           </TouchableOpacity>
         </View >
         <TextInput
@@ -75,7 +75,7 @@ export default function App ({ navigation }) {
         </View>
         <View style={styles.buttons}>
           <TouchableOpacity style={styles.signin_button}>
-            <Text style={styles.signin_button_text}>Sign in</Text>
+            <Text style={styles.signin_button_text}>Sign Up</Text>
           </TouchableOpacity>
 
           <TouchableOpacity style={styles.google_button}>
