@@ -80,10 +80,6 @@ export default function Signin_screen ({navigation}) {
           <TouchableOpacity onPress={goto_todo} style={styles.signin_button}>
             <Text style={styles.signin_button_text}>Sign in</Text>
           </TouchableOpacity>
-
-          <TouchableOpacity style={styles.google_button}>
-            <Image source={google_logo} />
-          </TouchableOpacity>
         </View>
       </View>
     </SafeAreaView >
@@ -148,7 +144,7 @@ const styles = StyleSheet.create({
   },
   signin_button: {
     backgroundColor: "#1A5CFF",
-    width: "75%",
+    width: "100%",
     height: 50,
     marginTop: 20,
     borderRadius: 50,
@@ -160,15 +156,5 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignContent: 'center',
-  },
-  google_button: {
-    backgroundColor: "#fff",
-    width: "16%",
-    height: 50,
-    marginTop: 25,
-    borderRadius: 50,
-    alignItems: "center",
-    flexDirection: "row",
-    justifyContent: "center",
   }
 });
