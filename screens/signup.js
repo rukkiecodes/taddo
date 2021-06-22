@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ImageBackground, Image, TextInput, TouchableOpacity } from 'react-native';
-// import firebase from "firebase"
+import firebase from "firebase"
 
 const background_image = require("../assets/ball1.png");
 const logo = require("../assets/logo.png");
@@ -14,7 +14,7 @@ const logo = require("../assets/logo.png");
 //   appId: "1:404474909957:web:91df98dd4c90278a25936c",
 //   measurementId: "G-MN6DFG7HWB"
 // };
-// // Initialize Firebase
+// Initialize Firebase
 // firebase.initializeApp(firebaseConfig);
 // firebase.analytics();
 
@@ -33,9 +33,29 @@ const App = ({ navigation }) => {
   const handle_email = (val) => set_email(val)
   const handle_password = (val) => set_password(val)
 
-  // const signup = () => {
-  //   // firebase.auth().createUserWithEmailAndPassword()
-  // }
+  var fire_config = {
+    apiKey: "AIzaSyBh5xvcvFTbkvb_mHYauCC1sjx1ZgREWDU",
+    authDomain: "taskbash.firebaseapp.com",
+    projectId: "taskbash",
+    storageBucket: "taskbash.appspot.com",
+    messagingSenderId: "21742881721",
+    appId: "1:21742881721:web:7849f0ee4a4d2e43a44468",
+    measurementId: "G-1B2E967P6L"
+  };
+
+  // Initialize Firebase
+  // firebase.initializeApp(fire_config)
+  // firebase.initializeApp(firebaseConfig);
+  // firebase.analytics();
+
+  const signup = () => {
+    // firebase.auth().createUserWithEmailAndPassword(email, password)
+    //   .then(user => {
+    //     console.log(user)
+    //   }).catch(err => {
+    //     console.log(err)
+    //   })
+  }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -83,7 +103,7 @@ const App = ({ navigation }) => {
               justifyContent: 'center',
             }}
           >
-            <Text style={{ color: '#fff', fontSize: 18 }}>Sign Up {email}</Text>
+            <Text style={{ color: '#fff', fontSize: 18 }}>Sign Up</Text>
           </TouchableOpacity>
         </View >
         <TextInput
@@ -100,7 +120,7 @@ const App = ({ navigation }) => {
           <Text style={styles.forgot_password_text}>Forgot Paswsord?</Text>
         </View>
         <View style={styles.buttons}>
-          <TouchableOpacity style={styles.signin_button}>
+          <TouchableOpacity onPress={signup} style={styles.signin_button}>
             <Text style={styles.signin_button_text}>Sign Up</Text>
           </TouchableOpacity>
         </View>
