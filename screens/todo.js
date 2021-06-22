@@ -1,13 +1,34 @@
-import React, { Component } from 'react';
-import { StyleSheet, StatusBar, Text, View, SafeAreaView, ScrollView, ImageBackground, Image, TextInput, TouchableOpacity } from 'react-native';
+import React, { useState } from 'react';
+import { StyleSheet, StatusBar, Text, View, SafeAreaView, ScrollView, ImageBackground, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, Keyboard, } from 'react-native';
+
+import Task from '../components/task';
+
 
 import back_button_icon from "../assets/arrow_back.png"
 import menu_button_icon from "../assets/menu_vertical.png"
 import plus_icon from "../assets/icons_plus.png"
 
 export default function todo () {
+  const [task, setTask] = useState();
+  const [taskItems, setTaskItems] = useState([]);
+
+  const handleAddTask = () => {
+    Keyboard.dismiss();
+    setTaskItems([...taskItems, task])
+    setTask(null);
+  }
+
+  const completeTask = (index) => {
+    let itemsCopy = [...taskItems];
+    itemsCopy.splice(index, 1);
+    setTaskItems(itemsCopy)
+  }
+
+
+
+
   return (
-    <SafeAreaView style={styles.safe_area_view}>
+    <SafeAreaView style={styles.container}>
       <StatusBar
         animated={true}
         backgroundColor="#f4f4f4"
@@ -21,93 +42,57 @@ export default function todo () {
           <Image source={menu_button_icon} />
         </TouchableOpacity>
       </View>
-
       <View style={styles.head_text_view}>
         <Text style={styles.head_text}>Todays tasks</Text>
       </View>
-      <View style={styles.scrollView_view}>
-        <ScrollView style={styles.scrollView}>
-          <Text style={styles.text}>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum.
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-            minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-            aliquip ex ea commodo consequat. Duis aute irure dolor in
-            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-            culpa qui officia deserunt mollit anim id est laborum. terry
-          </Text>
-        </ScrollView>
-      </View>
+      <ScrollView
+        contentContainerStyle={{
+          flexGrow: 1
+        }}
+        style={styles.scloll_view}
+        keyboardShouldPersistTaps='handled'
+      >
 
-      <View style={styles.inputs_action}>
-        <TextInput
-          style={styles.input}
-          placeholder="Add new task"
-        />
+        {/* Today's Tasks */}
+        <View style={styles.tasksWrapper}>
+          {/* <Text style={styles.sectionTitle}>Today's tasks</Text> */}
+          <View style={styles.items}>
+            {/* This is where the tasks will go! */}
+            {
+              taskItems.map((item, index) => {
+                return (
+                  <TouchableOpacity key={index} onPress={() => completeTask(index)}>
+                    <Task text={item} />
+                  </TouchableOpacity>
+                )
+              })
+            }
+          </View>
+        </View>
+      </ScrollView>
 
-        <TouchableOpacity style={styles.add_task}>
-          <Image source={plus_icon} />
+      {/* Write a task */}
+      {/* Uses a keyboard avoiding view which ensures the keyboard does not cover the items on screen */}
+      <KeyboardAvoidingView
+        behavior={Platform.OS === "ios" ? "padding" : "height"}
+        style={styles.writeTaskWrapper}
+      >
+        <TextInput style={styles.input} placeholder={'Write a task'} value={task} onChangeText={text => setTask(text)} />
+        <TouchableOpacity onPress={() => handleAddTask()}>
+          <View style={styles.addWrapper}>
+            <Image style={styles.addText} source={plus_icon} />
+          </View>
         </TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
+
     </SafeAreaView>
   )
 }
 
 const styles = StyleSheet.create({
-  safe_area_view: {
+  container: {
     flex: 1,
     backgroundColor: '#f4f4f4',
-    flexDirection: 'column',
-    justifyContent: 'space-between',
   },
   nav_view: {
     flexDirection: 'row',
@@ -129,30 +114,39 @@ const styles = StyleSheet.create({
   },
   head_text: {
     fontSize: 24,
-    fontWeight: 'bold'
+    fontWeight: 'bold',
+    color: '#434343'
   },
-  scrollView_view: {
+  tasksWrapper: {
+    paddingTop: 80,
     paddingHorizontal: 20,
-    maxHeight: '69%'
   },
-  scrollView: {
+  sectionTitle: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#434343'
   },
-  text: {
-    fontSize: 14,
+  items: {
+    marginTop: 30,
   },
-  inputs_action: {
-    height: 53,
-    paddingHorizontal: 20,
+  scloll_view: {
+    marginBottom: 60
+  },
+  writeTaskWrapper: {
+    position: 'absolute',
+    bottom: 5,
+    width: '100%',
     flexDirection: 'row',
-    justifyContent: 'space-between',
+    justifyContent: 'space-around',
     alignItems: 'center'
   },
   input: {
+    paddingVertical: 15,
+    paddingHorizontal: 15,
+    backgroundColor: '#FFF',
+    borderRadius: 60,
+    width: 250,
     height: 50,
-    width: '75%',
-    backgroundColor: '#fff',
-    borderRadius: 50,
-    paddingHorizontal: 20,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -163,11 +157,11 @@ const styles = StyleSheet.create({
 
     elevation: 3,
   },
-  add_task: {
-    backgroundColor: '#fff',
-    height: 50,
+  addWrapper: {
     width: 50,
-    borderRadius: 50,
+    height: 50,
+    backgroundColor: '#FFF',
+    borderRadius: 60,
     justifyContent: 'center',
     alignItems: 'center',
     shadowColor: "#000",
@@ -179,5 +173,9 @@ const styles = StyleSheet.create({
     shadowRadius: 2.22,
 
     elevation: 3,
-  }
+  },
+  addText: {
+    width: 20,
+    height: 20
+  },
 })

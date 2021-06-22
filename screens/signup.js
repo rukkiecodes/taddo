@@ -20,7 +20,7 @@ export default function App ({ navigation }) {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.image_container}>
-        <ImageBackground fadeDuration={1000} source={background_image} style={styles.background_image}>
+        <ImageBackground source={background_image} style={styles.background_image}>
           <View style={styles.background_image_view}>
             <Image
               style={styles.logo}
