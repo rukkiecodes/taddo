@@ -23,6 +23,7 @@ if (!firebase.app.length) {
 const Signup = ({ navigation }) => {
   const [email, set_email] = useState("");
   const [password, set_password] = useState("");
+  const [signup_button, set_signup_button] = useState("Sign Up")
 
   const goto_signin = () => {
     navigation.navigate("Signin_screen")
@@ -36,11 +37,20 @@ const Signup = ({ navigation }) => {
   const handle_password = (val) => set_password(val)
 
   const signup = () => {
+    set_signup_button("Signing Up...")
     firebase.auth().createUserWithEmailAndPassword(email, password)
       .then(user => {
         console.log(user)
+        set_signup_button("Sign Up")
+        setTimeout(() => {
+          goto_todo()
+        }, 300);
       }).catch(err => {
         console.log(err)
+        set_signup_button("Error signing up")
+        setTimeout(() => {
+          set_signup_button("Sign Up")
+        }, 300);
       })
   }
 
@@ -108,7 +118,7 @@ const Signup = ({ navigation }) => {
         </View>
         <View style={styles.buttons}>
           <TouchableOpacity onPress={signup} style={styles.signin_button}>
-            <Text style={styles.signin_button_text}>Sign Up</Text>
+            <Text style={styles.signin_button_text}>{signup_button}</Text>
           </TouchableOpacity>
         </View>
       </View>

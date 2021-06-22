@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ImageBackground, Image, TextInput, TouchableOpacity } from 'react-native';
 
 const background_image = require("../assets/ball1.png");
 const logo = require("../assets/logo.png");
 const google_logo = require("../assets/google_logo.png");
 
-export default function Signin_screen ({navigation}) {
-  const [email] = React.useState("Email");
-  const [password] = React.useState("Password");
+export default function Signin_screen ({ navigation }) {
+  const [email] = useState("Email");
+  const [password] = useState("Password");
+  const [signin_button, set_signin_button] = useState("Sign In")
 
   const goto_signup = () => {
     navigation.navigate("Signup_screen")
@@ -78,7 +79,7 @@ export default function Signin_screen ({navigation}) {
         </View>
         <View style={styles.buttons}>
           <TouchableOpacity onPress={goto_todo} style={styles.signin_button}>
-            <Text style={styles.signin_button_text}>Sign in</Text>
+            <Text style={styles.signin_button_text}>{signin_button}</Text>
           </TouchableOpacity>
         </View>
       </View>
