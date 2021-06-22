@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "404474909957",
+    "project_id": "taskcheq",
+    "storage_bucket": "taskcheq.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:404474909957:android:8eff72b760db2b2925936c",
+        "android_client_info": {
+          "package_name": "com.rukkiecodes.taskcheq"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "404474909957-tt8u50fr4hsrqqs6e2pvag10klftrk7q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlP7LmiWKXF_um1UUXoE6r5a24HTpC4Dc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "404474909957-tt8u50fr4hsrqqs6e2pvag10klftrk7q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

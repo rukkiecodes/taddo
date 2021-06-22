@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { StyleSheet, StatusBar, Text, View, SafeAreaView, ScrollView, ImageBackground, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, Keyboard, } from 'react-native';
+import { StyleSheet, Button, StatusBar, Text, View, SafeAreaView, ScrollView, ImageBackground, Image, TextInput, TouchableOpacity, KeyboardAvoidingView, Keyboard, Platform } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 
 import Task from '../components/task';
 
@@ -24,8 +25,29 @@ export default function todo () {
     setTaskItems(itemsCopy)
   }
 
+  // Date picker
+  const [date, setDate] = useState(new Date(1598051730000));
+  const [mode, setMode] = useState('date');
+  const [show, setShow] = useState(false);
 
+  const onChange = (event, selectedDate) => {
+    const currentDate = selectedDate || date;
+    setShow(Platform.OS === 'ios');
+    setDate(currentDate);
+  };
 
+  const showMode = (currentMode) => {
+    setShow(true);
+    setMode(currentMode);
+  };
+
+  const showDatepicker = () => {
+    showMode('date');
+  };
+
+  const showTimepicker = () => {
+    showMode('time');
+  };
 
   return (
     <SafeAreaView style={styles.container}>
@@ -78,13 +100,31 @@ export default function todo () {
         style={styles.writeTaskWrapper}
       >
         <TextInput style={styles.input} placeholder={'Write a task'} value={task} onChangeText={text => setTask(text)} />
+
+        <View>
+          <View>
+            <Button onPress={showDatepicker} title="Show date picker!" />
+          </View>
+          <View>
+            <Button onPress={showTimepicker} title="Show time picker!" />
+          </View>
+          {show && (
+            <DateTimePicker
+              testID="dateTimePicker"
+              value={date}
+              mode={mode}
+              is24Hour={true}
+              display="default"
+              onChange={onChange}
+            />
+          )}
+        </View>
         <TouchableOpacity onPress={() => handleAddTask()}>
           <View style={styles.addWrapper}>
             <Image style={styles.addText} source={plus_icon} />
           </View>
         </TouchableOpacity>
       </KeyboardAvoidingView>
-
     </SafeAreaView>
   )
 }
