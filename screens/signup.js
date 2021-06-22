@@ -1,24 +1,26 @@
+import firebase from "firebase";
+import '@firebase/firestore';
 import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ImageBackground, Image, TextInput, TouchableOpacity } from 'react-native';
-import firebase from "firebase"
 
 const background_image = require("../assets/ball1.png");
 const logo = require("../assets/logo.png");
 
-// const firebaseConfig = {
-//   apiKey: "AIzaSyDUGveXbBzy_ff3K263BXLizEDdczd12g8",
-//   authDomain: "taskcheq.firebaseapp.com",
-//   projectId: "taskcheq",
-//   storageBucket: "taskcheq.appspot.com",
-//   messagingSenderId: "404474909957",
-//   appId: "1:404474909957:web:91df98dd4c90278a25936c",
-//   measurementId: "G-MN6DFG7HWB"
-// };
-// Initialize Firebase
-// firebase.initializeApp(firebaseConfig);
-// firebase.analytics();
+var firebaseConfig = {
+  apiKey: "AIzaSyBh5xvcvFTbkvb_mHYauCC1sjx1ZgREWDU",
+  authDomain: "taskbash.firebaseapp.com",
+  projectId: "taskbash",
+  storageBucket: "taskbash.appspot.com",
+  messagingSenderId: "21742881721",
+  appId: "1:21742881721:web:7849f0ee4a4d2e43a44468",
+  measurementId: "G-1B2E967P6L"
+};
 
-const App = ({ navigation }) => {
+if (!firebase.app.length) {
+  firebase.initializeApp(firebaseConfig)
+}
+
+const Signup = ({ navigation }) => {
   const [email, set_email] = useState("");
   const [password, set_password] = useState("");
 
@@ -33,28 +35,13 @@ const App = ({ navigation }) => {
   const handle_email = (val) => set_email(val)
   const handle_password = (val) => set_password(val)
 
-  var fire_config = {
-    apiKey: "AIzaSyBh5xvcvFTbkvb_mHYauCC1sjx1ZgREWDU",
-    authDomain: "taskbash.firebaseapp.com",
-    projectId: "taskbash",
-    storageBucket: "taskbash.appspot.com",
-    messagingSenderId: "21742881721",
-    appId: "1:21742881721:web:7849f0ee4a4d2e43a44468",
-    measurementId: "G-1B2E967P6L"
-  };
-
-  // Initialize Firebase
-  // firebase.initializeApp(fire_config)
-  // firebase.initializeApp(firebaseConfig);
-  // firebase.analytics();
-
   const signup = () => {
-    // firebase.auth().createUserWithEmailAndPassword(email, password)
-    //   .then(user => {
-    //     console.log(user)
-    //   }).catch(err => {
-    //     console.log(err)
-    //   })
+    firebase.auth().createUserWithEmailAndPassword(email, password)
+      .then(user => {
+        console.log(user)
+      }).catch(err => {
+        console.log(err)
+      })
   }
 
   return (
@@ -203,4 +190,4 @@ const styles = StyleSheet.create({
 });
 
 
-export default App
+export default Signup
