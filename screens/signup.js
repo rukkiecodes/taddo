@@ -1,13 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ImageBackground, Image, TextInput, TouchableOpacity } from 'react-native';
+// import firebase from "firebase"
 
 const background_image = require("../assets/ball1.png");
 const logo = require("../assets/logo.png");
-const google_logo = require("../assets/google_logo.png");
 
-export default function App ({ navigation }) {
-  const [email] = React.useState("Email");
-  const [password] = React.useState("Password");
+// const firebaseConfig = {
+//   apiKey: "AIzaSyDUGveXbBzy_ff3K263BXLizEDdczd12g8",
+//   authDomain: "taskcheq.firebaseapp.com",
+//   projectId: "taskcheq",
+//   storageBucket: "taskcheq.appspot.com",
+//   messagingSenderId: "404474909957",
+//   appId: "1:404474909957:web:91df98dd4c90278a25936c",
+//   measurementId: "G-MN6DFG7HWB"
+// };
+// // Initialize Firebase
+// firebase.initializeApp(firebaseConfig);
+// firebase.analytics();
+
+const App = ({ navigation }) => {
+  const [email, set_email] = useState("");
+  const [password, set_password] = useState("");
 
   const goto_signin = () => {
     navigation.navigate("Signin_screen")
@@ -16,6 +29,13 @@ export default function App ({ navigation }) {
   const goto_todo = () => {
     navigation.navigate("Todo_screen")
   }
+
+  const handle_email = (val) => set_email(val)
+  const handle_password = (val) => set_password(val)
+
+  // const signup = () => {
+  //   // firebase.auth().createUserWithEmailAndPassword()
+  // }
 
   return (
     <SafeAreaView style={styles.container}>
@@ -63,22 +83,24 @@ export default function App ({ navigation }) {
               justifyContent: 'center',
             }}
           >
-            <Text style={{ color: '#fff', fontSize: 18 }}>Sign Up</Text>
+            <Text style={{ color: '#fff', fontSize: 18 }}>Sign Up {email}</Text>
           </TouchableOpacity>
         </View >
         <TextInput
           style={styles.input}
-          placeholder={email}
+          placeholder='Email'
+          onChangeText={handle_email}
         />
         <TextInput
           style={styles.input}
-          placeholder={password}
+          placeholder='Password'
+          onChangeText={handle_password}
         />
         <View style={{ width: '100%' }}>
           <Text style={styles.forgot_password_text}>Forgot Paswsord?</Text>
         </View>
         <View style={styles.buttons}>
-          <TouchableOpacity onPress={goto_todo} style={styles.signin_button}>
+          <TouchableOpacity style={styles.signin_button}>
             <Text style={styles.signin_button_text}>Sign Up</Text>
           </TouchableOpacity>
         </View>
@@ -159,3 +181,6 @@ const styles = StyleSheet.create({
     alignContent: 'center',
   }
 });
+
+
+export default App
