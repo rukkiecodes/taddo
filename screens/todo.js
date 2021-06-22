@@ -124,7 +124,6 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     paddingVertical: 20,
     height: '15%',
-    backgroundColor: 'red',
     flexDirection: 'column',
     justifyContent: 'flex-end'
   },
@@ -134,8 +133,6 @@ const styles = StyleSheet.create({
   },
   scrollView_view: {
     paddingHorizontal: 20,
-    // height: '80%'
-    // maxHeight: 500
     maxHeight: '69%'
   },
   scrollView: {
@@ -144,26 +141,43 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   inputs_action: {
-    height: '8%',
+    height: 53,
     paddingHorizontal: 20,
-    backgroundColor: 'blue',
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center'
   },
   input: {
-    height: '90%',
+    height: 50,
     width: '75%',
     backgroundColor: '#fff',
     borderRadius: 50,
-    paddingHorizontal: 20
+    paddingHorizontal: 20,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+
+    elevation: 3,
   },
   add_task: {
     backgroundColor: '#fff',
-    height: '90%',
-    width: 55,
+    height: 50,
+    width: 50,
     borderRadius: 50,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
+    shadowOpacity: 0.22,
+    shadowRadius: 2.22,
+
+    elevation: 3,
   }
 })
